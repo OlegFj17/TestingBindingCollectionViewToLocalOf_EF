@@ -22,9 +22,10 @@ namespace WpfApp3
 
             Db = new DbCtx();
             ShopsCollection = Db.Shops.Local.ToObservableCollection();
+            //здесь в примере нет группирования и прочее, но ICollectionView мне нужна в рабочем варианте 
             ShopsView = CollectionViewSource.GetDefaultView(ShopsCollection);
             
-            //
+            //закачиваем первую запись для наглядности, остальные кнопками
             Db.Shops.FirstOrDefault(s => s.Name == "Shop1");
 
             DataContext = this;
